@@ -1,6 +1,6 @@
 <footer>Hello, I'm the footer.</footer>
 
-<style>
+<style lang="scss">
 	footer {
 		padding: 1rem;
 		background: lightskyblue;
