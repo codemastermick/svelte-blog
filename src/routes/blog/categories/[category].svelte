@@ -16,22 +16,12 @@
 
 <script>
 	import { page } from '$app/stores';
+	import PostListing from '$lib/components/post_listing.svelte';
 	export let posts;
 </script>
 
 {#if posts.length}
-	<ul>
-		{#each posts as post}
-			<li>
-				<h2>
-					<a href={post.path}>
-						{post.meta.title}
-					</a>
-				</h2>
-				Published {post.meta.date}
-			</li>
-		{/each}
-	</ul>
+	<PostListing {posts} />
 {:else}
 	<p>No posts published under <b>{$page.params.category}</b></p>
 {/if}
