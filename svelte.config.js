@@ -3,6 +3,7 @@ import sveltePreprocess from 'svelte-preprocess'
 import { mdsvex } from 'mdsvex'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import autoprefixer from 'autoprefixer'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -10,7 +11,11 @@ const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
 	preprocess: [
-		sveltePreprocess(),
+		sveltePreprocess({
+			postcss: {
+				plugins: [autoprefixer]
+			}
+		}),
 		mdsvex({
 			extensions: ['.md'],
 			layout: {
