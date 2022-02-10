@@ -20,6 +20,10 @@
 	export let posts;
 </script>
 
+<svelte:head>
+	<title>Codemaster's Domain - Posted under "{$page.params.category}"</title>
+</svelte:head>
+
 {#if posts.length}
 	<PostListing {posts} />
 {:else}

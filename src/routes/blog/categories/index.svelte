@@ -20,6 +20,10 @@
 	export let allCategories;
 </script>
 
+<svelte:head>
+	<title>Codemaster's Domain - Post categories</title>
+</svelte:head>
+
 {#if allCategories.length}
 	<ul>
 		{#each allCategories as category}

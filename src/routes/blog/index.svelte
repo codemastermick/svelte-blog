@@ -16,6 +16,10 @@
 	export let posts;
 </script>
 
+<svelte:head>
+	<title>Codemaster's Domain - Blog</title>
+</svelte:head>
+
 {#if posts.length}
 	<PostListing {posts} />
 {:else}
