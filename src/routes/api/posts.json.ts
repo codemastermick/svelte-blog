@@ -24,7 +24,7 @@ export const get = async () => {
 		};
 	} catch (error) {
 		return {
-			status: error.status,
+			status: 500,
 			body: error.message
 		};
 	}
