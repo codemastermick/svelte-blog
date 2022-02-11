@@ -40,10 +40,14 @@ ${posts
 <guid isPermaLink="true">${siteURL}/${post.slug}</guid>
 <title>${post.title}</title>
 <author>${post.author}</author>
-<link>${siteURL}/blog/${post.slug}</link>
+<link>${siteURL}/${post.slug}</link>
 <description>${post.excerpt}</description>
 <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-${post.categories.map((category) => `<category>${category}</category>`).join('')}
+${post.categories
+	.map(
+		(category) => `<category domain="${siteURL}/blog/categories/${category}">${category}</category>`
+	)
+	.join('')}
 </item>`
 	)
 	.join('')}
