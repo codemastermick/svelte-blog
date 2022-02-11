@@ -2,6 +2,7 @@
 	export let title;
 	export let date;
 	export let categories;
+	export let edited;
 </script>
 
 <svelte:head>
@@ -11,7 +12,14 @@
 
 <h1>{title}</h1>
 
-<p>Published: {date}</p>
+<span>
+	<p>
+		Published: {date}
+		{#if edited}
+			<i>(Updated {edited})</i>
+		{/if}
+	</p>
+</span>
 
 <slot />
 
