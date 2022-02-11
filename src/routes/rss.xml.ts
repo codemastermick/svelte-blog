@@ -1,7 +1,7 @@
 //TODO fill in these three constants to match your own setup
-const siteURL = 'https://your-domain.tld';
-const siteTitle = 'Your site title here';
-const siteDescription = 'Your site description here';
+const siteURL = 'http://localhost:3000';
+const siteTitle = "Codemaster's Domain";
+const siteDescription = "Codemaster Mick's personal site";
 
 export const get = async () => {
 	const posts = await Promise.all(
@@ -37,11 +37,13 @@ const render = (posts) =>
 ${posts
 	.map(
 		(post) => `<item>
-<guid isPermaLink="true">${siteURL}/blog/${post.slug}</guid>
+<guid isPermaLink="true">${siteURL}/${post.slug}</guid>
 <title>${post.title}</title>
+<author>${post.author}</author>
 <link>${siteURL}/blog/${post.slug}</link>
 <description>${post.excerpt}</description>
 <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+${post.categories.map((category) => `<category>${category}</category>`).join('')}
 </item>`
 	)
 	.join('')}
