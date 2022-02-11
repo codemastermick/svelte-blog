@@ -1,27 +1,27 @@
 <script context="module">
-	export const load = async ({ fetch }) => {
-		const posts = await fetch('/api/posts.json');
-		const allPosts = await posts.json();
+  export const load = async ({ fetch }) => {
+    const posts = await fetch('/api/posts.json');
+    const allPosts = await posts.json();
 
-		return {
-			props: {
-				posts: allPosts
-			}
-		};
-	};
+    return {
+      props: {
+        posts: allPosts
+      }
+    };
+  };
 </script>
 
 <script>
-	import PostListing from '$lib/components/post_listing.svelte';
-	export let posts;
+  import PostListing from '$lib/components/post_listing.svelte';
+  export let posts;
 </script>
 
 <svelte:head>
-	<title>Codemaster's Domain - Blog</title>
+  <title>Codemaster's Domain - Blog</title>
 </svelte:head>
 
 {#if posts.length}
-	<PostListing {posts} />
+  <PostListing {posts} />
 {:else}
-	<p>No posts published!</p>
+  <p>No posts published!</p>
 {/if}

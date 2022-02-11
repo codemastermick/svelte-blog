@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Get in touch with Codemaster Mick</title>
+  <title>Get in touch with Codemaster Mick</title>
 </svelte:head>
 
 <h1>Get in touch</h1>

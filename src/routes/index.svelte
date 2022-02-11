@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Codemaster's Domain</title>
+  <title>Codemaster's Domain</title>
 </svelte:head>
 
 <h1>Welcome to SvelteKit</h1>
