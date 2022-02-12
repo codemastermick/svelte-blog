@@ -14,14 +14,14 @@
   };
 </script>
 
-<script>
+<script lang="ts">
   import { page } from '$app/stores';
   import PostListing from '$lib/components/post_listing.svelte';
   export let posts;
 </script>
 
 <svelte:head>
-  <title>Codemaster's Domain - Posted under "{$page.params.category}"</title>
+  <title>{import.meta.env.VITE_SITENAME} - Posted under "{$page.params.category}"</title>
 </svelte:head>
 
 {#if posts.length}
