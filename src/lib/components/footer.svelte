@@ -1,4 +1,4 @@
-<footer>Hello, I'm the footer.</footer>
+<footer>Site design by Codemaster Mick</footer>
 
 <style lang="scss">
   footer {
@@ -6,6 +6,6 @@
     background: lightskyblue;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 </style>
