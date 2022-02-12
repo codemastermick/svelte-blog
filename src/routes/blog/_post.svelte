@@ -1,8 +1,11 @@
 <script>
+  import Author from '$lib/components/author.svelte';
   export let title;
   export let date;
   export let categories;
   export let edited;
+  export let author;
+  export let authorAvatar;
 </script>
 
 <svelte:head>
@@ -13,7 +16,8 @@
 <h1>{title}</h1>
 
 <span>
-  <p>
+  <Author name={author} avatar={authorAvatar} />
+  <p class="publish">
     Published: {date}
     {#if edited}
       <i>(Updated {edited})</i>
@@ -37,3 +41,9 @@
     </ul>
   </aside>
 {/if}
+
+<style>
+  .publish {
+    font-size: 0.75em;
+  }
+</style>
