@@ -11,3 +11,8 @@ declare namespace App {
 
   interface Stuff {}
 }
+
+interface ImportMetaEnv {
+  VITE_OWNER: string;
+  VITE_SITENAME: string;
+}
