@@ -13,7 +13,7 @@
 
 <script lang="ts">
   import PostListing from '$lib/components/post_listing.svelte';
-  export let posts;
+  export let posts: PostMetadata[];
 </script>
 
 <svelte:head>
@@ -25,3 +25,5 @@
 {:else}
   <p>No posts published!</p>
 {/if}
+
+<!-- TODO add category listing on the right hand side -->
