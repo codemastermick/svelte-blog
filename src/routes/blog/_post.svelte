@@ -11,6 +11,13 @@
 <svelte:head>
   <title>Codemaster's Blog - {title}</title>
   <meta property="og:title" content={title} />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content={author} />
+  <meta property="article:published_time" content={date} />
+  <meta property="article:modified_time" content={edited} />
+  {#each categories as category}
+    <meta property="article:tag" content={category} />
+  {/each}
 </svelte:head>
 
 <h1>{title}</h1>
