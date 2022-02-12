@@ -22,7 +22,7 @@
 
 <Header />
 {#key currentRoute}
-  <main in:fly={{ duration: 150, delay: 150, x: 500 }} out:fade={{ duration: 150 }}>
+  <main in:fly={{ duration: 150, delay: 150, x: 2000 }} out:fade={{ duration: 150 }}>
     <slot {owner} />
   </main>
 {/key}
