@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-  <title>Codemaster's Domain - Blog</title>
+  <title>{import.meta.env.VITE_SITENAME} - Blog</title>
 </svelte:head>
 
 {#if posts.length}
