@@ -1,6 +1,6 @@
 //TODO fill in these three constants to match your own setup
 const siteURL = 'http://localhost:3000';
-const siteTitle = "Codemaster's Domain";
+const siteTitle = import.meta.env.VITE_SITENAME;
 const siteDescription = "Codemaster Mick's personal site";
 
 export const get = async () => {
