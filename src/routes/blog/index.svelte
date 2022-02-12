@@ -1,4 +1,4 @@
-<script context="module">
+<script context="module" lang="ts">
   export const load = async ({ fetch }) => {
     const posts = await fetch('/api/posts.json');
     const allPosts = await posts.json();
@@ -11,7 +11,7 @@
   };
 </script>
 
-<script>
+<script lang="ts">
   import PostListing from '$lib/components/post_listing.svelte';
   export let posts;
 </script>

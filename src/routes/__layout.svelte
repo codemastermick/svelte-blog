@@ -1,4 +1,4 @@
-<script context="module">
+<script context="module" lang="ts">
   export const load = ({ url }) => {
     const currentRoute = url.pathname;
 
@@ -16,7 +16,7 @@
   import Footer from '$lib/components/footer.svelte';
   import '$lib/styles/style.scss';
   import { fade, fly } from 'svelte/transition';
-  export let currentRoute;
+  export let currentRoute: string;
   export let owner: string;
 </script>
 

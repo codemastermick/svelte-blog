@@ -1,4 +1,4 @@
-<script context="module">
+<script context="module" lang="ts">
   export const load = ({ url }) => {
     const currentRoute = url.pathname;
 

@@ -1,4 +1,4 @@
-<script context="module">
+<script context="module" lang="ts">
   export const load = async ({ params, fetch }) => {
     const response = await fetch('/api/posts.json');
     const posts = await response.json();
@@ -16,8 +16,8 @@
   };
 </script>
 
-<script>
-  export let allCategories;
+<script lang="ts">
+  export let allCategories: string[];
 </script>
 
 <svelte:head>
