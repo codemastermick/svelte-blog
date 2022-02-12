@@ -29,3 +29,9 @@ interface PostMetadata {
   excerpt: string;
   body: string;
 }
+
+interface AuthorMetadata {
+  name: string;
+  email: string;
+  avatarURL: string;
+}
