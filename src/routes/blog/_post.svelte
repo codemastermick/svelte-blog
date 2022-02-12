@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-  <title>Codemaster's Blog - {title}</title>
+  <title>{import.meta.env.VITE_SITENAME} - {title}</title>
   <meta property="og:title" content={title} />
   <meta property="og:type" content="article" />
   <meta property="article:author" content={author} />
