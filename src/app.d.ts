@@ -15,6 +15,7 @@ declare namespace App {
 interface ImportMetaEnv {
   VITE_OWNER: string;
   VITE_SITENAME: string;
+  VITE_GRAPHCMS_ENDPOINT: string;
 }
 
 interface PostMetadata {
