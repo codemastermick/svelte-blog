@@ -1,4 +1,9 @@
-<h1>Whoops!</h1>
+<script lang="ts">
+  export let status: number;
+  export let message: string;
+</script>
+
+<h1>Whoops! Encounted {status} Page {message.toLowerCase()}</h1>
 
 <p>Sorry, something went wrong! We cannot find the page you are looking for right now.</p>
 <p>Things you could try:</p>

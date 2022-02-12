@@ -1,13 +1,15 @@
-<script>
-  export let status;
-  export let message;
+<script lang="ts">
+  export let status: number;
+  export let message: string;
 </script>
 
-<h1>{{ status }}{{ message }}</h1>
+<h1>{status}: {message}</h1>
 
 <p>
-  Sorry, something went wrong! This has been logged and we will look in to this shortly and try to
-  get it fixed before your next visit!
+  Sorry, something went wrong! We honestly aren't sure what, but we can look in to it if you raise
+  an issue with the maintainer <a href="https://github.com/codemastermick/svelte-blog/issues"
+    >here</a
+  >.
 </p>
 <p>Things you could try:</p>
 <ul>
