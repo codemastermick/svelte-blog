@@ -16,3 +16,14 @@ interface ImportMetaEnv {
   VITE_OWNER: string;
   VITE_SITENAME: string;
 }
+
+interface PostMetadata {
+  author: string;
+  authorAvatar: string | undefined;
+  title: string;
+  categories: string[];
+  date: string;
+  edited: string | undefined;
+  excerpt: string;
+  body: string;
+}
