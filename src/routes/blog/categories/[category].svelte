@@ -16,7 +16,7 @@
 
 <script lang="ts">
   import { page } from '$app/stores';
-  import PostListing from '$lib/components/post_listing.svelte';
+  import BlogRoll from '$lib/components/blogRoll.svelte';
   export let posts;
 </script>
 
@@ -25,7 +25,7 @@
 </svelte:head>
 
 {#if posts.length}
-  <PostListing {posts} />
+  <BlogRoll {posts} />
 {:else}
   <p>No posts published under <b>{$page.params.category}</b></p>
 {/if}
