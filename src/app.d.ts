@@ -19,6 +19,12 @@ interface ImportMetaEnv {
   VITE_GRAPHCMS_ENDPOINT: string;
 }
 
+interface AuthorMetadata {
+  name: string;
+  email: string;
+  avatarURL: string;
+}
+
 interface PostMetadata {
   author: AuthorMetadata;
   title: string;
@@ -28,10 +34,4 @@ interface PostMetadata {
   categories: string[];
   slug: string;
   body: string;
-}
-
-interface AuthorMetadata {
-  name: string;
-  email: string;
-  avatarURL: string;
 }
