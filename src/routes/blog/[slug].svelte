@@ -1,3 +1,25 @@
+<script context="module">
+  import { getArticle } from '$lib/graphql.client';
+  export async function load(page) {
+    try {
+      const article = await getArticle(page.params.slug);
+      return {
+        props: {
+          title: article.title,
+          date: article.publishDate,
+          categories: article.categories,
+          edited: article.updatedAt,
+          author: article.author.name,
+          authorAvatar: article.author.avatarURL,
+          body: article.body
+        }
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  }
+</script>
+
 <script>
   import Author from '$lib/components/author.svelte';
   export let title;

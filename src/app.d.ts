@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 /// <reference types="@sveltejs/kit" />
 
 // See https://kit.svelte.dev/docs#typescript
@@ -15,15 +16,22 @@ declare namespace App {
 interface ImportMetaEnv {
   VITE_OWNER: string;
   VITE_SITENAME: string;
+  VITE_GRAPHCMS_ENDPOINT: string;
 }
 
 interface PostMetadata {
-  author: string;
-  authorAvatar: string | undefined;
+  author: AuthorMetadata;
   title: string;
-  categories: string[];
-  date: string;
-  edited: string | undefined;
+  publishDate: string;
+  updatedAt: string | undefined | null;
   excerpt: string;
+  categories: string[];
+  slug: string;
   body: string;
+}
+
+interface AuthorMetadata {
+  name: string;
+  email: string;
+  avatarURL: string;
 }
