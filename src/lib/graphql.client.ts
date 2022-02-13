@@ -1,5 +1,4 @@
-import { GraphQLClient } from 'graphql-request';
-import { request } from 'graphql-request';
+import { GraphQLClient, request } from 'graphql-request';
 import { blogRoll } from './graphql/blogRoll.request';
 import { categoriesRequest } from './graphql/categories.request';
 import { getArticlesByTag } from './graphql/fetchByCategory.request';
