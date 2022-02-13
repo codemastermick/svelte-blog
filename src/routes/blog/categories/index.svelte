@@ -21,7 +21,7 @@
 </script>
 
 <svelte:head>
-  <title>Codemaster's Domain - Post categories</title>
+  <title>{import.meta.env.VITE_SITENAME} - Post categories</title>
 </svelte:head>
 
 {#if allCategories.length}
