@@ -7,11 +7,11 @@
     {#each posts as post}
       <li>
         <h2>
-          <a href={post.path}>
-            {post.meta.title}
+          <a href="blog/{post.slug}">
+            {post.title}
           </a>
         </h2>
-        Published {post.meta.date}
+        Published {post.publishDate}
       </li>
     {/each}
   </ul>
