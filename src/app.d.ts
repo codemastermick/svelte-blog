@@ -20,13 +20,13 @@ interface ImportMetaEnv {
 }
 
 interface PostMetadata {
-  author: string;
-  authorAvatar: string | undefined;
+  author: AuthorMetadata;
   title: string;
-  categories: string[];
-  date: string;
-  edited: string | undefined;
+  publishDate: string;
+  updatedAt: string | undefined | null;
   excerpt: string;
+  categories: string[];
+  slug: string;
   body: string;
 }
 
