@@ -6,6 +6,7 @@
   export let edited;
   export let author;
   export let authorAvatar;
+  export let body;
 </script>
 
 <svelte:head>
@@ -31,6 +32,8 @@
     {/if}
   </p>
 </span>
+
+{body}
 
 <slot />
 
