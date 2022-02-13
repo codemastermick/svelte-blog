@@ -1,14 +1,14 @@
 <script context="module">
   export const load = async ({ params, fetch }) => {
-    const currentCategory = params.category;
-    const response = await fetch('/api/posts.json');
-    const posts = await response.json();
+    // const currentCategory = params.category;
+    // const response = await fetch('/api/posts.json');
+    // const posts = await response.json();
 
-    const matchingPosts = posts.filter((post) => post.meta.categories.includes(currentCategory));
+    // const matchingPosts = posts.filter((post) => post.meta.categories.includes(currentCategory));
 
     return {
       props: {
-        posts: matchingPosts
+        posts: await getArticlesByCategory(params.category)
       }
     };
   };
@@ -17,6 +17,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import BlogRoll from '$lib/components/blogRoll.svelte';
+  import { getArticlesByCategory } from '$lib/graphql.client';
   export let posts;
 </script>
 

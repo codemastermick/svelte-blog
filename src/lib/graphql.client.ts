@@ -2,6 +2,7 @@ import { GraphQLClient } from 'graphql-request';
 import { request } from 'graphql-request';
 import { blogRoll } from './graphql/blogRoll.request';
 import { categoriesRequest } from './graphql/categories.request';
+import { getArticlesByTag } from './graphql/fetchByCategory.request';
 import { fetchBySlug } from './graphql/fetchBySlug.request';
 import { fullFetch } from './graphql/fullFetch.request';
 
@@ -46,4 +47,9 @@ export const fetchFull = async (): Promise<Partial<PostMetadata[]>> => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const getArticlesByCategory = async (category: string): Promise<PostMetadata> => {
+  const res = await request(ENDPOINT, getArticlesByTag, { categories: [category] });
+  return res.articles;
 };
