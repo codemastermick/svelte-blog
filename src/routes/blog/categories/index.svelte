@@ -1,16 +1,18 @@
 <script context="module" lang="ts">
+  import { getCategories } from '$lib/graphql.client';
+
   export const load = async ({ params, fetch }) => {
-    const response = await fetch('/api/posts.json');
-    const posts = await response.json();
-    let found = [];
-    posts.forEach((p) => {
-      found = [...found, ...p.meta.categories];
-    });
-    const allCategories = [...new Set(found)];
+    // const response = await fetch('/api/posts.json');
+    // const posts = await response.json();
+    // let found = [];
+    // posts.forEach((p) => {
+    //   found = [...found, ...p.meta.categories];
+    // });
+    // const allCategories = [...new Set(found)];
 
     return {
       props: {
-        allCategories: allCategories
+        allCategories: await getCategories()
       }
     };
   };
