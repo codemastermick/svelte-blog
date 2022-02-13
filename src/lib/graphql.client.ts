@@ -49,10 +49,17 @@ export const getArticle = async (slug: string): Promise<PostMetadata> => {
   return res.article;
 };
 
-export const FetchCategories = gql`
-  {
-    articles {
-      categories
-    }
+export const getCategories = async (): Promise<Partial<PostMetadata>> => {
+  try {
+    const res = await client.request(gql`
+      {
+        articles {
+          categories
+        }
+      }
+    `);
+    return res.articles;
+  } catch (error) {
+    console.log(error);
   }
-`;
+};
