@@ -4,6 +4,16 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "eslint.validate": ["typescript", "javascript"],
-  "files.eol": "\n"
+  "eslint.validate": [
+    "typescript",
+    "javascript"
+  ],
+  "files.eol": "\n",
+  "cSpell.words": [
+    "GRAPHCMS",
+    "mdsvex",
+    "rehype",
+    "sveltejs",
+    "VITE"
+  ]
 }
