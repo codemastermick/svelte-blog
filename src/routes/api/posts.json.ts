@@ -1,4 +1,5 @@
 import { fetchFull } from '$lib/graphql.client';
+import { sortByPublishDate } from '$lib/utils/article.sorter';
 
 export const get = async () => {
   try {
@@ -18,12 +19,8 @@ export const get = async () => {
     // );
     const allPosts = await fetchFull();
 
-    const sortedPosts = allPosts.sort((a, b) => {
-      return new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf();
-    });
-
     return {
-      body: sortedPosts
+      body: sortByPublishDate(allPosts)
     };
   } catch (error) {
     return {
