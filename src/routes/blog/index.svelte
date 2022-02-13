@@ -1,13 +1,18 @@
 <script context="module" lang="ts">
+  import { client, BlogRoll } from '$lib/graphql.client';
   export const load = async ({ fetch }) => {
-    const posts = await fetch('/api/posts.json');
-    const allPosts = await posts.json();
-
-    return {
-      props: {
-        posts: allPosts
-      }
-    };
+    // const posts = await fetch('/api/posts.json');
+    // const allPosts = await posts.json();
+    try {
+      const res = await client.request(BlogRoll);
+      return {
+        props: {
+          posts: res.articles
+        }
+      };
+    } catch (error) {
+      console.log(error);
+    }
   };
 </script>
 
