@@ -20,7 +20,7 @@ export const getBlogRoll = async (): Promise<Partial<PostMetadata>> => {
   }
 };
 
-export const getArticle = async (slug: string): Promise<PostMetadata> => {
+export const getArticleBySlug = async (slug: string): Promise<PostMetadata> => {
   const res = await request(ENDPOINT, fetchBySlug, { slug });
   return res.article;
 };

@@ -1,8 +1,8 @@
 <script context="module">
-  import { getArticle } from '$lib/graphql.client';
+  import { getArticleBySlug } from '$lib/graphql.client';
   export async function load(page) {
     try {
-      const article = await getArticle(page.params.slug);
+      const article = await getArticleBySlug(page.params.slug);
       return {
         props: {
           title: article.title,
