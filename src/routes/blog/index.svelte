@@ -17,7 +17,7 @@
 </script>
 
 <script lang="ts">
-  import PostListing from '$lib/components/post_listing.svelte';
+  import BlogRoll from '$lib/components/blogRoll.svelte';
   export let posts: PostMetadata[];
 </script>
 
@@ -26,7 +26,7 @@
 </svelte:head>
 
 {#if posts.length}
-  <PostListing {posts} />
+  <BlogRoll {posts} />
 {:else}
   <p>No posts published!</p>
 {/if}
