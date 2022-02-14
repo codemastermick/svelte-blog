@@ -1,5 +1,5 @@
-<script>
-  export let posts;
+<script lang="ts">
+  export let posts: Partial<PostData[]>;
 </script>
 
 {#if posts.length}
