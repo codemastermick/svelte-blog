@@ -46,10 +46,10 @@ export const getArticleBySlug = async (slug: string): Promise<PostData | ErrorRe
 export const getCategories = async (): Promise<string[] | ErrorResponse> => {
   try {
     const res = await client.request(categoriesRequest);
-    const articles = res.articles;
+    const categories = res.articles;
     let found = [];
-    articles.forEach((article: Partial<PostData>) => {
-      found = [...found, ...article.categories];
+    categories.forEach((category: Partial<CategoryData>) => {
+      found = [...found, ...category.tag];
     });
     return [...new Set(found)];
   } catch (error) {
