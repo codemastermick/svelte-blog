@@ -22,18 +22,24 @@ interface ImportMetaEnv {
 interface GraphCMSAutoFields {
   id: string;
   createdAt: string;
-  createdBy: string | undefined | null;
+  createdBy?: string;
   updatedAt: string;
-  updatedBy: string | undefined | null;
-  publishedAt: string | undefined | null;
-  publishedBy: string | undefined | null;
-  scheduledIn: string[] | undefined | null;
+  updatedBy?: string;
+  publishedAt?: string;
+  publishedBy?: string;
+  scheduledIn?: string[];
+}
+
+interface CategoryMetadata extends GraphCMSAutoFields {
+  tag: string;
+  articles: PostMetadata[];
 }
 
 interface AuthorMetadata extends GraphCMSAutoFields {
   name: string;
   email: string;
-  avatarURL: string;
+  avatarURL?: string;
+  articles: PostMetadata[];
 }
 
 interface PostMetadata extends GraphCMSAutoFields {
@@ -41,7 +47,7 @@ interface PostMetadata extends GraphCMSAutoFields {
   title: string;
   publishDate: string;
   excerpt: string;
-  categories: string[];
+  categories: CategoryMetadata[];
   slug: string;
   body: string;
 }
