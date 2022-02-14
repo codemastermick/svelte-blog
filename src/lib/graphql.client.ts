@@ -5,29 +5,34 @@ import { getArticlesByTag } from './graphql/fetchByCategory.request';
 import { fetchBySlug } from './graphql/fetchBySlug.request';
 import { fullFetch } from './graphql/fullFetch.request';
 
+interface ErrorResponse {
+  status: number;
+  message: string;
+}
+
 const ENDPOINT = import.meta.env.VITE_GRAPHCMS_ENDPOINT;
 
 const client = new GraphQLClient(ENDPOINT as string, {
   headers: {}
 });
 
-export const getBlogRoll = async (): Promise<Partial<PostMetadata> | undefined> => {
+export const getBlogRoll = async (): Promise<Partial<PostMetadata> | ErrorResponse> => {
   try {
     const res = await client.request(blogRoll);
     return res.articles;
   } catch (error) {
-    console.log(error);
+    return {
+      status: 500,
+      message: error.message
+    };
   }
 };
 
-export const getArticleBySlug = async (
-  slug: string
-): Promise<PostMetadata | { status: number; message: string }> => {
+export const getArticleBySlug = async (slug: string): Promise<PostMetadata | ErrorResponse> => {
   try {
     const res = await request(ENDPOINT, fetchBySlug, { slug });
     return res.article;
   } catch (error) {
-    console.log(error);
     return {
       status: 404,
       message: 'Article not found!'
@@ -35,7 +40,7 @@ export const getArticleBySlug = async (
   }
 };
 
-export const getCategories = async (): Promise<string[]> => {
+export const getCategories = async (): Promise<string[] | ErrorResponse> => {
   try {
     const res = await client.request(categoriesRequest);
     const articles = res.articles;
@@ -45,22 +50,35 @@ export const getCategories = async (): Promise<string[]> => {
     });
     return [...new Set(found)];
   } catch (error) {
-    console.log(error);
+    return {
+      status: 500,
+      message: error.message
+    };
   }
 };
 
-export const fetchFull = async (): Promise<Partial<PostMetadata[]>> => {
+export const fetchFull = async (): Promise<Partial<PostMetadata[] | ErrorResponse>> => {
   try {
     const res = await client.request(fullFetch);
     return res.articles;
   } catch (error) {
-    console.log(error);
+    return {
+      status: 500,
+      message: error.message
+    };
   }
 };
 
 export const getArticlesByCategory = async (
   category: string
-): Promise<PostMetadata[] | undefined> => {
-  const res = await request(ENDPOINT, getArticlesByTag, { categories: [category] });
-  return res.articles;
+): Promise<PostMetadata[] | ErrorResponse> => {
+  try {
+    const res = await request(ENDPOINT, getArticlesByTag, { categories: [category] });
+    return res.articles;
+  } catch (error) {
+    return {
+      status: 500,
+      message: error.message
+    };
+  }
 };

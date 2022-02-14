@@ -17,7 +17,7 @@ export const get = async () => {
     //     };
     //   })
     // );
-    const allPosts = await fetchFull();
+    const allPosts = (await fetchFull()) as PostMetadata[];
 
     return {
       body: sortByPublishDate(allPosts)
