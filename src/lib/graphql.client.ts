@@ -11,7 +11,7 @@ const client = new GraphQLClient(ENDPOINT as string, {
   headers: {}
 });
 
-export const getBlogRoll = async (): Promise<Partial<PostMetadata>> => {
+export const getBlogRoll = async (): Promise<Partial<PostMetadata> | undefined> => {
   try {
     const res = await client.request(blogRoll);
     return res.articles;
