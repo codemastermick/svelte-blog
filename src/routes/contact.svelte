@@ -1,10 +1,7 @@
 <script context="module" lang="ts">
-  export const load = ({ url }) => {
-    const currentRoute = url.pathname;
-
+  export const load = () => {
     return {
       props: {
-        currentRoute,
         owner: import.meta.env.VITE_OWNER
       }
     };

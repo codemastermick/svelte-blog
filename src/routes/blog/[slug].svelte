@@ -1,13 +1,14 @@
-<script context="module">
-  import { getArticle } from '$lib/graphql.client';
+<script context="module" lang="ts">
+  import { getArticleBySlug } from '$lib/graphql.client';
+  import { parseCategories } from '$lib/utils/categoryParser';
   export async function load(page) {
     try {
-      const article = await getArticle(page.params.slug);
+      const article = (await getArticleBySlug(page.params.slug)) as PostData;
       return {
         props: {
           title: article.title,
           date: article.publishDate,
-          categories: article.categories,
+          categories: parseCategories(article.categories),
           edited: article.updatedAt,
           author: article.author.name,
           authorAvatar: article.author.avatarURL,
@@ -20,15 +21,15 @@
   }
 </script>
 
-<script>
+<script lang="ts">
   import Author from '$lib/components/author.svelte';
-  export let title;
-  export let date;
-  export let categories;
-  export let edited;
-  export let author;
-  export let authorAvatar;
-  export let body;
+  export let title: string;
+  export let date: string;
+  export let categories: string[];
+  export let edited: string;
+  export let author: string;
+  export let authorAvatar: string;
+  export let body: string;
 </script>
 
 <svelte:head>

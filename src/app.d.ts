@@ -19,19 +19,35 @@ interface ImportMetaEnv {
   VITE_GRAPHCMS_ENDPOINT: string;
 }
 
-interface PostMetadata {
-  author: AuthorMetadata;
-  title: string;
-  publishDate: string;
-  updatedAt: string | undefined | null;
-  excerpt: string;
-  categories: string[];
-  slug: string;
-  body: string;
+interface GraphCMSAutoFields {
+  id: string;
+  createdAt: string;
+  createdBy?: string;
+  updatedAt: string;
+  updatedBy?: string;
+  publishedAt?: string;
+  publishedBy?: string;
+  scheduledIn?: string[];
 }
 
-interface AuthorMetadata {
+interface CategoryData extends GraphCMSAutoFields {
+  tag: string;
+  articles: PostData[];
+}
+
+interface AuthorData extends GraphCMSAutoFields {
   name: string;
   email: string;
-  avatarURL: string;
+  avatarURL?: string;
+  articles: PostData[];
+}
+
+interface PostData extends GraphCMSAutoFields {
+  author: AuthorData;
+  title: string;
+  publishDate: string;
+  excerpt: string;
+  categories: CategoryData[];
+  slug: string;
+  body: string;
 }
