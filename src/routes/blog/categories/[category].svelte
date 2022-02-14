@@ -1,31 +1,33 @@
 <script context="module">
-	export const load = async ({ params, fetch }) => {
-		const currentCategory = params.category;
-		const response = await fetch('/api/posts.json');
-		const posts = await response.json();
+  import { getArticlesByCategory } from '$lib/graphql.client';
+  export const load = async ({ params, fetch }) => {
+    // const currentCategory = params.category;
+    // const response = await fetch('/api/posts.json');
+    // const posts = await response.json();
 
-		const matchingPosts = posts.filter((post) => post.meta.categories.includes(currentCategory));
+    // const matchingPosts = posts.filter((post) => post.meta.categories.includes(currentCategory));
 
-		return {
-			props: {
-				posts: matchingPosts
-			}
-		};
-	};
+    return {
+      props: {
+        category: params.category,
+        posts: await getArticlesByCategory(params.category)
+      }
+    };
+  };
 </script>
 
-<script>
-	import { page } from '$app/stores';
-	import PostListing from '$lib/components/post_listing.svelte';
-	export let posts;
+<script lang="ts">
+  import BlogRoll from '$lib/components/blogRoll.svelte';
+  export let category;
+  export let posts;
 </script>
 
 <svelte:head>
-	<title>Codemaster's Domain - Posted under "{$page.params.category}"</title>
+  <title>{import.meta.env.VITE_SITENAME} - Posted under "{category}"</title>
 </svelte:head>
 
 {#if posts.length}
-	<PostListing {posts} />
+  <BlogRoll {posts} />
 {:else}
-	<p>No posts published under <b>{$page.params.category}</b></p>
+  <p>No posts published under <b>{category}</b></p>
 {/if}

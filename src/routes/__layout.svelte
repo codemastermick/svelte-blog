@@ -1,27 +1,29 @@
-<script context="module">
-	export const load = ({ url }) => {
-		const currentRoute = url.pathname;
+<script context="module" lang="ts">
+  export const load = ({ url }) => {
+    const currentRoute = url.pathname;
 
-		return {
-			props: {
-				currentRoute
-			}
-		};
-	};
+    return {
+      props: {
+        currentRoute,
+        owner: import.meta.env.VITE_OWNER
+      }
+    };
+  };
 </script>
 
-<script>
-	import Header from '$lib/components/header.svelte';
-	import Footer from '$lib/components/footer.svelte';
-	import '$lib/styles/style.scss';
-	import { fade } from 'svelte/transition';
-	export let currentRoute;
+<script lang="ts">
+  import Header from '$lib/components/header.svelte';
+  import Footer from '$lib/components/footer.svelte';
+  import '$lib/styles/style.scss';
+  import { fade, fly } from 'svelte/transition';
+  export let currentRoute: string;
+  export let owner: string;
 </script>
 
 <Header />
 {#key currentRoute}
-	<main in:fade={{ duration: 150, delay: 150 }} out:fade={{ duration: 150 }}>
-		<slot />
-	</main>
+  <main in:fly={{ duration: 150, delay: 150, x: 2000 }} out:fade={{ duration: 150 }}>
+    <slot {owner} />
+  </main>
 {/key}
-<Footer />
+<Footer {owner} />

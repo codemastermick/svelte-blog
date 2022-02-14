@@ -1,6 +1,12 @@
 {
-	"useTabs": true,
-	"singleQuote": true,
-	"trailingComma": "none",
-	"printWidth": 100
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "useTabs": false,
+  "printWidth": 100,
+  "singleQuote": true,
+  "svelteAllowShorthand": true,
+  "svelteSortOrder": "scripts-options-markup-styles",
+  "tabWidth": 2,
+  "trailingComma": "none"
 }

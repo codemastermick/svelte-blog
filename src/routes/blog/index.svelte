@@ -1,27 +1,34 @@
-<script context="module">
-	export const load = async ({ fetch }) => {
-		const posts = await fetch('/api/posts.json');
-		const allPosts = await posts.json();
-
-		return {
-			props: {
-				posts: allPosts
-			}
-		};
-	};
+<script context="module" lang="ts">
+  import { getBlogRoll } from '$lib/graphql.client';
+  export const load = async ({ fetch }) => {
+    // const posts = await fetch('/api/posts.json');
+    // const allPosts = await posts.json();
+    try {
+      const res = await getBlogRoll();
+      return {
+        props: {
+          posts: res
+        }
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  };
 </script>
 
-<script>
-	import PostListing from '$lib/components/post_listing.svelte';
-	export let posts;
+<script lang="ts">
+  import BlogRoll from '$lib/components/blogRoll.svelte';
+  export let posts: PostMetadata[];
 </script>
 
 <svelte:head>
-	<title>Codemaster's Domain - Blog</title>
+  <title>{import.meta.env.VITE_SITENAME} - Blog</title>
 </svelte:head>
 
 {#if posts.length}
-	<PostListing {posts} />
+  <BlogRoll {posts} />
 {:else}
-	<p>No posts published!</p>
+  <p>No posts published!</p>
 {/if}
+
+<!-- TODO add category listing on the right hand side -->
