@@ -58,7 +58,9 @@ export const fetchFull = async (): Promise<Partial<PostMetadata[]>> => {
   }
 };
 
-export const getArticlesByCategory = async (category: string): Promise<PostMetadata> => {
+export const getArticlesByCategory = async (
+  category: string
+): Promise<PostMetadata[] | undefined> => {
   const res = await request(ENDPOINT, getArticlesByTag, { categories: [category] });
   return res.articles;
 };
