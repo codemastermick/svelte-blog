@@ -5,6 +5,9 @@ import { getArticlesByTag } from './graphql/fetchByCategory.request';
 import { fetchBySlug } from './graphql/fetchBySlug.request';
 import { fullFetch } from './graphql/fullFetch.request';
 
+// const { GRAPHCMS_TOKEN } = process.env;
+// console.log(GRAPHCMS_TOKEN);
+
 interface ErrorResponse {
   status: number;
   message: string;
@@ -13,7 +16,7 @@ interface ErrorResponse {
 const ENDPOINT = import.meta.env.VITE_GRAPHCMS_ENDPOINT;
 
 const client = new GraphQLClient(ENDPOINT as string, {
-  headers: {}
+  // headers: { Authorization: `Bearer ${GRAPHCMS_TOKEN}` }
 });
 
 export const getBlogRoll = async (): Promise<Partial<PostMetadata> | ErrorResponse> => {
@@ -70,10 +73,10 @@ export const fetchFull = async (): Promise<Partial<PostMetadata[] | ErrorRespons
 };
 
 export const getArticlesByCategory = async (
-  category: string
+  tag: string
 ): Promise<PostMetadata[] | ErrorResponse> => {
   try {
-    const res = await request(ENDPOINT, getArticlesByTag, { categories: [category] });
+    const res = await request(ENDPOINT, getArticlesByTag, { tag });
     return res.articles;
   } catch (error) {
     return {
