@@ -2,7 +2,7 @@ import { gql } from 'graphql-request';
 
 export const blogRoll = gql`
   {
-    articles {
+    articles(orderBy: publishedAt_DESC) {
       title
       publishDate
       slug
