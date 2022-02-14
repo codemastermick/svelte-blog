@@ -21,15 +21,15 @@
   }
 </script>
 
-<script>
+<script lang="ts">
   import Author from '$lib/components/author.svelte';
-  export let title;
-  export let date;
-  export let categories;
-  export let edited;
-  export let author;
-  export let authorAvatar;
-  export let body;
+  export let title: string;
+  export let date: string;
+  export let categories: string[];
+  export let edited: string;
+  export let author: string;
+  export let authorAvatar: string;
+  export let body: string;
 </script>
 
 <svelte:head>
