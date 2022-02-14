@@ -1,17 +1,14 @@
 <script context="module" lang="ts">
   import { getArticleBySlug } from '$lib/graphql.client';
+  import { parseCategories } from '$lib/utils/categoryParser';
   export async function load(page) {
     try {
       const article = (await getArticleBySlug(page.params.slug)) as PostData;
-      let found = [];
-      article.categories.forEach((category) => {
-        found.push(category.tag);
-      });
       return {
         props: {
           title: article.title,
           date: article.publishDate,
-          categories: [...new Set(found)],
+          categories: parseCategories(article.categories),
           edited: article.updatedAt,
           author: article.author.name,
           authorAvatar: article.author.avatarURL,
