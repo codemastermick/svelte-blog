@@ -19,7 +19,7 @@ const client = new GraphQLClient(ENDPOINT as string, {
   // headers: { Authorization: `Bearer ${GRAPHCMS_TOKEN}` }
 });
 
-export const getBlogRoll = async (): Promise<Partial<PostMetadata> | ErrorResponse> => {
+export const getBlogRoll = async (): Promise<Partial<PostData> | ErrorResponse> => {
   try {
     const res = await client.request(blogRoll);
     return res.articles;
@@ -31,7 +31,7 @@ export const getBlogRoll = async (): Promise<Partial<PostMetadata> | ErrorRespon
   }
 };
 
-export const getArticleBySlug = async (slug: string): Promise<PostMetadata | ErrorResponse> => {
+export const getArticleBySlug = async (slug: string): Promise<PostData | ErrorResponse> => {
   try {
     const res = await request(ENDPOINT, fetchBySlug, { slug });
     return res.article;
@@ -48,7 +48,7 @@ export const getCategories = async (): Promise<string[] | ErrorResponse> => {
     const res = await client.request(categoriesRequest);
     const articles = res.articles;
     let found = [];
-    articles.forEach((article: Partial<PostMetadata>) => {
+    articles.forEach((article: Partial<PostData>) => {
       found = [...found, ...article.categories];
     });
     return [...new Set(found)];
@@ -60,7 +60,7 @@ export const getCategories = async (): Promise<string[] | ErrorResponse> => {
   }
 };
 
-export const fetchFull = async (): Promise<Partial<PostMetadata[] | ErrorResponse>> => {
+export const fetchFull = async (): Promise<Partial<PostData[] | ErrorResponse>> => {
   try {
     const res = await client.request(fullFetch);
     return res.articles;
@@ -72,9 +72,7 @@ export const fetchFull = async (): Promise<Partial<PostMetadata[] | ErrorRespons
   }
 };
 
-export const getArticlesByCategory = async (
-  tag: string
-): Promise<PostMetadata[] | ErrorResponse> => {
+export const getArticlesByCategory = async (tag: string): Promise<PostData[] | ErrorResponse> => {
   try {
     const res = await request(ENDPOINT, getArticlesByTag, { tag });
     return res.articles;

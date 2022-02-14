@@ -30,24 +30,24 @@ interface GraphCMSAutoFields {
   scheduledIn?: string[];
 }
 
-interface CategoryMetadata extends GraphCMSAutoFields {
+interface CategoryData extends GraphCMSAutoFields {
   tag: string;
-  articles: PostMetadata[];
+  articles: PostData[];
 }
 
-interface AuthorMetadata extends GraphCMSAutoFields {
+interface AuthorData extends GraphCMSAutoFields {
   name: string;
   email: string;
   avatarURL?: string;
-  articles: PostMetadata[];
+  articles: PostData[];
 }
 
-interface PostMetadata extends GraphCMSAutoFields {
-  author: AuthorMetadata;
+interface PostData extends GraphCMSAutoFields {
+  author: AuthorData;
   title: string;
   publishDate: string;
   excerpt: string;
-  categories: CategoryMetadata[];
+  categories: CategoryData[];
   slug: string;
   body: string;
 }

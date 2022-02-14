@@ -2,7 +2,7 @@
   import { getArticleBySlug } from '$lib/graphql.client';
   export async function load(page) {
     try {
-      const article = (await getArticleBySlug(page.params.slug)) as PostMetadata;
+      const article = (await getArticleBySlug(page.params.slug)) as PostData;
       let found = [];
       article.categories.forEach((category) => {
         found.push(category.tag);
