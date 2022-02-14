@@ -2,7 +2,7 @@ import { gql } from 'graphql-request';
 
 export const fullFetch = gql`
   {
-    articles {
+    articles(orderBy: publishedAt_DESC) {
       id
       title
       publishDate
