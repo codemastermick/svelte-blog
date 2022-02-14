@@ -1,8 +1,8 @@
-<script context="module">
+<script context="module" lang="ts">
   import { getArticleBySlug } from '$lib/graphql.client';
   export async function load(page) {
     try {
-      const article = await getArticleBySlug(page.params.slug);
+      const article = (await getArticleBySlug(page.params.slug)) as PostMetadata;
       return {
         props: {
           title: article.title,
