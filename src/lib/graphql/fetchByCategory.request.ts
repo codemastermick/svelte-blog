@@ -1,19 +1,22 @@
 import { gql } from 'graphql-request';
 
+/* This query will get all articles tagged with the passed string,
+ * returning the full contents and sorting them by most recent published
+ */
 export const getArticlesByTag = gql`
-  query FetchArticlesByCategory($categories: [String!]) {
-    articles(where: { categories_contains_some: $categories }) {
-      id
+  query GetArticlesByTag($tag: String!) {
+    articles(where: { categories_some: { tag_contains: $tag } }, orderBy: publishDate_DESC) {
+      slug
       title
       publishDate
-      slug
       updatedAt
       author {
         name
-        email
         avatar
       }
-      categories
+      categories {
+        tag
+      }
       excerpt
       body
     }

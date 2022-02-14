@@ -13,7 +13,9 @@ export const fullFetch = gql`
         email
         avatar
       }
-      categories
+      categories {
+        tag
+      }
       excerpt
       body
     }
