@@ -20,9 +20,19 @@ export const getBlogRoll = async (): Promise<Partial<PostMetadata> | undefined> 
   }
 };
 
-export const getArticleBySlug = async (slug: string): Promise<PostMetadata> => {
-  const res = await request(ENDPOINT, fetchBySlug, { slug });
-  return res.article;
+export const getArticleBySlug = async (
+  slug: string
+): Promise<PostMetadata | { status: number; message: string }> => {
+  try {
+    const res = await request(ENDPOINT, fetchBySlug, { slug });
+    return res.article;
+  } catch (error) {
+    console.log(error);
+    return {
+      status: 404,
+      message: 'Article not found!'
+    };
+  }
 };
 
 export const getCategories = async (): Promise<string[]> => {
