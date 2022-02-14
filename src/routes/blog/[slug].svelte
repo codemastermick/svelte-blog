@@ -3,11 +3,15 @@
   export async function load(page) {
     try {
       const article = (await getArticleBySlug(page.params.slug)) as PostMetadata;
+      let found = [];
+      article.categories.forEach((category) => {
+        found.push(category.tag);
+      });
       return {
         props: {
           title: article.title,
           date: article.publishDate,
-          categories: article.categories,
+          categories: [...new Set(found)],
           edited: article.updatedAt,
           author: article.author.name,
           authorAvatar: article.author.avatarURL,
