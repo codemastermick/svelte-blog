@@ -18,7 +18,7 @@
 
 <script lang="ts">
   import BlogRoll from '$lib/components/blogRoll.svelte';
-  export let posts: PostMetadata[];
+  export let posts: PostData[];
 </script>
 
 <svelte:head>
